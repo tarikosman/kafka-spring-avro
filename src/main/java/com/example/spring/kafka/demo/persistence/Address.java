@@ -1,11 +1,8 @@
 package com.example.spring.kafka.demo.persistence;
 
-import java.util.UUID;
+import com.example.spring.kafka.demo.common.JpaEntity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,11 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
+public class Address extends JpaEntity {
     private String street;
     private String houseNumber;
     private String postalCode;
