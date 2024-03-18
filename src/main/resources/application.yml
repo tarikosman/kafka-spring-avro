@@ -1,0 +1,37 @@
+server:
+  port: 26000
+spring:
+  # Used for regular spring kafka integration as in Hello Kafka
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    properties:
+      # "[basic.auth.credentials.source]": USER_INFO
+      # "[basic.auth.user.info]": {{ SR_API_KEY }}:{{ SR_API_SECRET }}
+      "[schema.registry.url]": "http://localhost:8081"
+    consumer:
+      group-id: "@project.artifactId@" # Replace this with the consumer group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        "[specific.avro.reader]": true
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+
+logging:
+  level:
+    root: warn
+    "[com.example]": info
+    "[org.springframework]": info

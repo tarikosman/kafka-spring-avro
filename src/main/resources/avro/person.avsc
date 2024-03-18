@@ -1,0 +1,61 @@
+{
+  "namespace": "com.example.spring.kafka.avro.person",
+  "type": "record",
+  "name": "Person",
+  "fields": [
+    {
+      "name": "event",
+      "type": {
+        "type": "enum",
+        "name": "PersonEvent",
+        "symbols": ["CREATED", "UPDATED", "DELETED"]
+      }
+    },
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "addresses",
+      "type": {
+        "type": "array",
+        "items": {
+          "name": "Address",
+          "type": "record",
+          "fields": [
+            {
+              "name": "id",
+              "type": {
+                "type": "string",
+                "logicalType": "uuid"
+              }
+            },
+            {
+              "name": "street",
+              "type": "string"
+            },
+            {
+              "name": "houseNumber",
+              "type": "string"
+            },
+            {
+              "name": "postalCode",
+              "type": "string"
+            },
+            {
+              "name": "city",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
