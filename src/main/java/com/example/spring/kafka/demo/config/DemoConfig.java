@@ -1,6 +1,9 @@
 package com.example.spring.kafka.demo.config;
 
 import org.apache.kafka.clients.admin.NewTopic;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.web.ErrorProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
@@ -28,5 +31,12 @@ public class DemoConfig {
                 .partitions(10)
                 // .replicas(2) // only possible if more than one node is started
                 .build();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(ErrorProperties.class)
+    @ConfigurationProperties(prefix = "server.error")
+    ErrorProperties errorProperties() {
+        return new ErrorProperties();
     }
 }

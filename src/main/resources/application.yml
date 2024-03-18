@@ -1,5 +1,9 @@
 server:
   port: 26000
+  error:
+    include-exception: true
+    include-message: always
+    include-stacktrace: always
 spring:
   # Used for regular spring kafka integration as in Hello Kafka
   kafka:
