@@ -158,6 +158,7 @@
 							<generateModelTests>false</generateModelTests>
 							<modelNameSuffix>Dto</modelNameSuffix>
 							<!-- <generateSupportingFiles>false</generateSupportingFiles> -->
+							<supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
 							<basePackage>com.example.spring.kafka.demo</basePackage>
 							<apiPackage>com.example.spring.kafka.demo.rest</apiPackage>
 							<modelPackage>com.example.spring.kafka.demo.service</modelPackage>

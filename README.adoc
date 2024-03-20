@@ -1,0 +1,25 @@
+== Demo using Kafka from spring-boot with confluent schema registry and avro
+
+=== Starting environment
+
+* Start environment using `start.sh`.
+* Open Conductor UI on http://localhost:8080/
+* Manually add schema for topic `person-changes` with schema from
+`src/main/resources/avro/person.avsc`
+* Start spring boot application in IDE or using `mvn spring-boot:run`
+
+=== Testing
+
+* Open Swagger UI on http://localhost:26000/swagger-ui/index.html and
+create, update and delete entities. Be aware, that post should (contrary
+to to de provided default value) not contain values for the entity IDs.
+* Open Conductor UI on http://localhost:8080/ to check the messages in
+the topic (if you already were logged in, you may need to logout and
+login newly to see the topic, created by the application)
+
+=== Notes
+
+In a real environment, it is not suggested to create the topic from the
+application. Manually creating it gives more controll over the topics
+and also allows to change the parameters easily, like replication factor
+etc.
